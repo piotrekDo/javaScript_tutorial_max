@@ -36,3 +36,17 @@ function add(num1, num2){
 ```
 funkcję wywołujemy dalej w kodzie odnosząc się do nazwy, przekazując ew. argumenty:
 ``add(1, 2);``
+
+## Kolejność zapisu kodu
+Kod JavaScript jest przetwarzany od góry. Nie możemy się odwołać do zmienniej, która jest zapisana poniżej, podobnie jak w Java. Zasada ta nie dotyczy zapisu funkcji. Mozemy wywołać funkcję zapisaną u dołu strony. Ponownie, tak jak w Java. 
+
+### Wprowadzenie do Scope- Global oraz Local
+Zmienne zapisane wewnątrz funkcji są lokalne- dostępne tylko w ramach samej funkcji. Ich sope jest ograniczony nawiasami klamrowymi. Zmienne globalne, zapisane w kodzie **można modyfikować** wewnątrz funkcji. Wywołanie funkcji może zmienić stan zmiennej globalnej. 
+```
+let result = 0;
+function changeResult(){
+    result = 12;
+}
+```
+Jeżeli wywołamy funkcję `changeResult`, nadpiszemy wartość dla zmiennej `result`. Nie trzeba do niej przypisuwać wyniku zwracanego przez funkcję. Nie musi ona posiadać słowa `return`.
+**NIE JEST TO DOBRE PODEJŚCIE**. Wewnątrz funkcji możemy wywołać też inne funkcje. 
