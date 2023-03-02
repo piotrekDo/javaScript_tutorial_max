@@ -60,3 +60,29 @@ Do elementów można odwołać się wg indexu, indexy zaczynają się od zera. `
 
 #### Podstawowe metody/ funkcje
 - push pozwala dodać nowy element na koniec tablicy. 
+
+## Tworzenie obiektów
+Obiekty można tworzyć na wiele sposobów. Jednym z nich jest użycie nawiasów klamrowych. Obiekty w JavaScript są tak naprawdę mapą klucz:wartość. Obiekty można tworzyć z innych obiektów
+```
+const entry = {
+    key: 'some value',
+    intKey: 2
+}
+```
+
+Do pól obiektów odnosimy się po kropce, jak w Java. Drugim sposobem jest zapis wlasności w nawiasie kwadratowym. Użyteczne, jeżeli w nazwie jest myślnik. 
+```
+  const lol = {
+    'lol-1': 'hm'
+  }
+
+  console.log(lol["lol-1"]);
+```
+
+## null / undefined/ NaN
+`undefined` to domyślna wartość dla niezainicjowanych zmiennych. Objawia się także przy odwołaniu do nieistniejących danych.  
+`null` podobnie jak unfefined jest 'czystą', pustą wartością. Nie jest tym samym co undefined.  
+`NaN` not a number, nie jest typem a bardziej rodzajem błędu wskazującym, że dane nie są liczbą. Przykładowo 3 * 'hi' zwróci NaN.
+
+## Import skryptów z defer oraz async.
+Dawniej skrypty były umieszczane na koniec tagu body, aby załadowały się na koniec, po parsowaniu strony. Inaczej kod nie będzie działał poprawnie. Może to opóźnić wczytanie dokumentu, zwłaszcza jeżeli skrypt jest pobierany z innego źródła- zacznie się to dopiero gdy cały dokument html zostanie sparsowaniy, co może potrwać przy większych plikach. Zastosowanie słowa `defer` oznacza, że skrypt powinien zostać pobrany odrazu, ale wykonany dopiero po parsowaniu html. Słowo `async` pozwala na natychmiastowe pobranie skryptu i równoległe jego wykonanie w czasie, kiedy dokument HTML jest parsowany. Może to być użyteczne w sytuacji, gdzie skrypt nie zawiera żadnych odniesień do samego dokumentu HTML. Wykonanie skryptu z wykorzystaniem async nie gwarantuje kolejnosci zapisanej w dokumencie html. 
