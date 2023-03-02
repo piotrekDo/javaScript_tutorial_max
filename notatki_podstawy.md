@@ -23,3 +23,16 @@ currentResult +=10;
 let calculationDesription = `( ${currentResult} + 10)`
 ```
 zapis w backtickach pozala zachować całe formatowanie, łącznie ze znakami przejścia do nowego wiersza. Znaki specjalne escapujemy z pojedyńczym backslashem: \
+
+# Wprowadzenie do funkcji
+Funkcje odpowiadają Javowym metodą. Pozwalają zdefiniować fragment kodu, który możemy wykorzystać gdziekolwiek w kodzie dowolną liczbę razy. Kod zapisany w funkcjach **nie wykonuje się odrazu** po zapisaniu funkcji. Funkcję należy **wywołać**.
+
+**Tworzenie funkcji**
+Funkcje w JS można zapisać na kilka sposóbów jednym jest zapis od słowa `function` nazwaFunkcji(opcjonalne_parametry){}. W sygnaturze metody **nie zapisujemy** typu zwracanego, nawet jeżeli funkcja nie jest void. Zapisu funkcji nie kończymy średnikiem po nawiasie. Wszystkie zmienne zapisane wewnątrz funkcji **nie są** widoczne dla reszty kodu.
+```
+function add(num1, num2){
+    return num1 + num2;
+}
+```
+funkcję wywołujemy dalej w kodzie odnosząc się do nazwy, przekazując ew. argumenty:
+``add(1, 2);``
