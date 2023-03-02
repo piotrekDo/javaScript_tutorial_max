@@ -50,3 +50,13 @@ function changeResult(){
 ```
 Jeżeli wywołamy funkcję `changeResult`, nadpiszemy wartość dla zmiennej `result`. Nie trzeba do niej przypisuwać wyniku zwracanego przez funkcję. Nie musi ona posiadać słowa `return`.
 **NIE JEST TO DOBRE PODEJŚCIE**. Wewnątrz funkcji możemy wywołać też inne funkcje. 
+
+## Wykonywanie funkcji
+Niektóre funkcje, jak np `addEventListener` wymagają funkcji jako argument. Moża zapisać lambdę lub przekazać referencję do funkcji **bez nazwiasów** inaczej wywoła się ona podczas parsowania pliku przez przeglądarkę.
+
+## Tablice- wstęp
+Podstawowa struktura danych pozwalająca na ich przechowywanie. Tablice deklarujemy nawiasami kwadratowymi, nie trzeba przekazywać rozmiaru jak w Java. `let entries = [];`
+Do elementów można odwołać się wg indexu, indexy zaczynają się od zera. `let entry = entries[0];` Pobranie elementu w taki sposób nie usuwa go z tablicy.  
+
+#### Podstawowe metody/ funkcje
+- push pozwala dodać nowy element na koniec tablicy. 
