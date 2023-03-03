@@ -9,3 +9,6 @@ Porówania obiektów, wyglądających identycznie przez podójne i potrójne = z
 
 # Truthy oraz Falsy
 JavaScript może działać warunkowo z obiektami i zmiennymi. W typ przypadku zprawdzamy czy wartość jest zainicjowana. Jeżeli wartość jest nullem lub undefined otrzymamy false. Zero jest traktowane jako false. 
+
+### Bang operator: !!
+zapisując przed wartością truthy albo falsy dwa wykrzykniki, możemy tę wartość przekonwertować na boolean
