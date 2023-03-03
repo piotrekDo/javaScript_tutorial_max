@@ -48,6 +48,4 @@ const lol = {
   "lol-1": "hm",
 };
 
-function lolol(){
-
-}
+function lolol() {}
