@@ -10,3 +10,5 @@ document.addEventListener('keydown', (event) => {
     alert(`Key pressed name: ${name} \r\n Key pressed code: ${code}`);
   }, false);
 ```
+
+
