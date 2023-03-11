@@ -12,3 +12,68 @@ JavaScript może działać warunkowo z obiektami i zmiennymi. W typ przypadku zp
 
 ### Bang operator: !!
 zapisując przed wartością truthy albo falsy dwa wykrzykniki, możemy tę wartość przekonwertować na boolean
+
+## Switch
+Podobnie jak w Java stosowany do obsługi wielu opcji. Operator Switch korzysta z potrójnego =. Wymaga zapisu `break` po każdej opcji. W przeciwnym razie wykona **wszystkie** case poniżej. Na końcu powinien zawierać blok `default`.
+```
+switch (ev) {
+    case LOG_EVENT_PLAYER_ATTACK: 
+        logEntry.target = 'MONSTER';
+        break;
+    case LOG_EVENT_MONSTER_ATTACK:
+        logEntry.target = 'PLAYER';
+        break;
+    default: 
+        logEntry = {};
+}
+```
+
+# Pętle
+W JavaScript wyróżniamy 4 rodzaje pętli:
+- `for` podstawowy rodzaj pętli z licznikiem, zwyczajowo inkrementowanym po każdym wykonaniu ciała pętli. Zapisywana z użyciem słowa kluczowego `for`:
+    ```
+    for (let i = 0; i <10; i++){
+        console.log("lol");
+    }
+    ```
+- `for-of` wykonuje się dla każdego elementu w tablicy. Zapisywana ze słowem kluczowym `for`. Nie posiada warunku, zapisywana w odniesieniu do tablicy:
+    ```
+    for (const element of array) {
+        console.log(element);
+    }
+    ```
+    działa również ze String, iterując każdy znak ciągu.
+- `for-in` służy do iterowania obiektów. W JS każdy obiekt jest mapą klucz:wartość
+    ```
+    for (const key in obj) {
+        console.log(key);
+        console.log(obj[key]);
+    }
+    ```
+- `while` wykonuje się tak długo jak spełniony jest przekazany warunek.
+    ```
+    while (isLoggedIn) {
+        ...
+    }
+    ```
+    Istnieje również wariant pętli do-while:
+    ```
+    do {
+        ...
+    }while(isTrue);
+    ```
+
+#### Labeled Statements
+Pętle i inne wyrażenia w JavaScript możemy oznaczać nazwą. Do nazw tych można odnosić się dzięki słowom `break` oraz `continue`. Pozwala to np. wewnątrz zagnieżdzonej pętli zatrzymać pętlę zewnętrzną
+```
+let i = 0;
+outherWhile: do {
+    console.log('outer', i);
+    innerLoop: for(let j = 0; j < 5; j++) {
+        if(j === 3) break outherWhile;
+        console.log('inner', j);
+    }
+    i++;
+} while(i < 3);
+```
+wewnątrz pętli for przerywamy działanie pętli do-while. 

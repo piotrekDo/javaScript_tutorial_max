@@ -37,6 +37,15 @@ progress[value]::-moz-progress-bar {
   transition: all 0.2s ease-out;
 }
 
+progress {
+  text-align: center;
+}
+progress:after {
+  position: relative;
+  top: -90%;
+  content: attr(value)'%';
+}
+
 button {
   font: inherit;
   background: #ff0062;
