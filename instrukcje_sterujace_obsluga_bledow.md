@@ -77,3 +77,30 @@ outherWhile: do {
 } while(i < 3);
 ```
 wewnątrz pętli for przerywamy działanie pętli do-while. 
+
+# Obsługa wyjątków - try/catch i definicja własnych
+
+### Wyrzucanie własnych wyjątków
+Wyjątki zostają rzucane z pomocą słowa `throw` **bez `new`** jak w Java. Wyjątkiem może być wszytko- liczba, string czy dowolny obiekt. Często jest to obiekt z polem *message*.  
+
+```
+function getMaxLifeValues() {
+  const enteredValue = prompt("Max life", "100");
+  const parsedValue = Number.parseInt(enteredValue);
+  if (isNaN(parsedValue) || parsedValue > 0) {
+    throw { message: "Invalid user input, not a number" };
+  }
+  return parsedValue;
+}
+```
+
+### Try/catch
+Bloki try powinny być możliwie najmniejsze. W przeciwieństwie do Java, w JS nie ma możliwości zdeiniowania konkretnego typu wyjątku przechwytywanego w ramach catch. `error` w poniszym przykładzie to referencja do której możemy się odnieść i np. wyprintować `error.message`. Możliwe jest zastosowanie bloku `finally`. Można zapisać też blok try z finally, bez catch.
+```
+let chosenMaxLife;
+try {
+  chosenMaxLife = getMaxLifeValues();
+} catch (error) {
+  console.log(error);
+}
+```
