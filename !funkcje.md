@@ -1,4 +1,41 @@
 # Funkcje w JavaScript
+
+## Podsumowanie zapisu funkcji
+Zapis domyślny
+```
+const add = (a, b) => {
+    const result = a + b;
+    return result; // like in "normal" functions, parameters and return statement are OPTIONAL!
+};
+```
+
+Krótki zapis, z jednym parametrem
+```
+const log = message => {
+    console.log(message); // could also return something of course - this example just doesn't
+};
+```
+
+Zapis bez parametrów
+```
+const greet = () => {
+    console.log('Hi there!');
+};
+```
+
+Zapis jednolinijkowy
+```
+const add = (a, b) => a + b;
+```
+
+Zapis zwracający obiekt bez słowa return. Nawias okrągły jest potrzebny, zwyczajne klamry oznaczają ciało funkcji.
+```
+const loadPerson = pName => ({name: pName });
+```
+
+
+
+
 Funkcje stanowią 'kod na żądanie' agregując fragmenty kodu, które mogą się powtarzać lub działać nieco inaczej, zwracać różny wynik przy tej samej logice przyjmując różne **argumenty**. W definicji metody możemy zapisać **parametr** jako wartość zmienną, stosowaną w logice funkcji. **Argument** to konkretna wartość, przekazana do metody przy jej wywołaniu. Można powiedzieć, że funkcja przyjmuje *jakiąś liczbę* co jest parametrem, natomiast przekazanie '5' to argument.  
 
 **Funkcje vs metody**  
@@ -36,3 +73,11 @@ Funkcje anonimowe nie posiadają nazwy, można ich uzywać przy deklarowaniu fun
 ```
 someButton.addEventListener('click', function(){...});
 ```
+
+## Funkcje strzałkowe
+Pozwalaja na skrócenie zapisu, podbnie jak lambda w Java.
+```
+const someFunction = (a, b) => a + b;
+```
+
+Przy zapisie jednolinijkowym nie potrzebujemy słowa `retun` ani klamer. Zapis z jednym argumentem pozwala nie zapisywać nawiasu okrągłego `arg => {...}`.
