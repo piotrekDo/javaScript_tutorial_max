@@ -67,3 +67,41 @@ Kod zapisany w skrypcie przetwarzany jest przez silnik zawarty w przeglądarce. 
 **Stack** pamięć krótkotrwała, zarządza przepływem danych w programie takim jak wywołanie funkcji. Która funkcja jest obecnie wykonywana, jeżeli zwraca wartość to do której funkcji. Stack zarządza '_co dzieje się w programie_'.  
   
 Drfinicja funkcji przechowywana jest w heap, a wywołanie w stack. Wywołanie to zostaje usunięte ze stack w moemencie, gdy funkcja zakończy swoje działanie. 
+
+### Wartości prymitywne i referencje
+Do wartości prymitywnych zaliczamy:
+- String
+- Number
+- Boolean
+- null
+- undefined
+- Symbol
+
+**Przechowywane zwykle w Stack!** wartości te są kopiowane przy przypisywaniu.
+```
+let name = 'Max';
+let anotherName = name;
+```
+Wartość jest skopiowana. W tej sytuacji gdyby zmienić teraz `name` na inną wartość, `anotherName` nadal zawierać będzie 'Max'.  
+  
+Do referencji zaliczamy wszystkie inne obiekty. Te przechowywane są zwykle w Heap. Zmienna przechowuje wskaźnik na miejsce w pamięci obiektu. Kopiowwaie takego obiektu nie powoduje stworzenia nowego. Przykładem obiektu może być tablica.
+```
+let hobbies = ['Sport'];
+let newHobbies = hobbies;
+hobbies.push('Coding');
+console.log(newHobbies) -> wydrukuje ["Sport", "Coding"]
+```
+
+Na powyższym przykładnie widać, że skopiowana została jedynie referencja i modyfikacja pierwszej tablicy **ma wpływ** na drugą! Zadziała to również w drugą stronę. Zmiany wprowadzone na referencji `newHobbies` będą miały odzwierciedlenie na referencji `hobbies`. Pozwala to na ewektywniejsze zarządanie pamięcią. Faktyczne kopiowanie można wykonać:
+`let yetAnotherHobbies = {...hobbies};`
+w taki sposób jawnie tworzymy nowy obiekt poprzez `{ }` i stosujemy specjalny operator `...referencja` co pozwala przekopiować wszystkie własności takiego obiektu do nowego. 
+
+Porównanie referencji poprzez === porównuje jedynie miejsce w pamięci, podobnie jak w Java. 
+
+## Garbage collector i zarządzanie pamięcią
+W ramach Heap działą mechanizm usuwający przechowywane tam dane. Usuwa obiekty bez referencji, podobnie jak w Java. Dla przykładu garbage collector zadziała w sytuacji poniżej
+```
+let person = {name: 'Max'};
+person = null;
+```
+Wówczas obiekt `{name: 'Max'}` zostanie usunięty z pamięci, ponieważ żadna referencja się do niego nie odwołuje. 
