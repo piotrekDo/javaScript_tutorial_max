@@ -60,3 +60,10 @@ name = 'Max';
 zmienna `name` została wyniesiona na górę skryptu, przez co jest dostępna, ale nie jest zainicjowana. Podobna sytuacja ma miejsce w przypadku funkcji, dzięki temu zapisane gdziekolwiek w skrypcie nie powodują błędów przy ich uruchomieniu. 
 
 ## Jak działa JavaScript
+Kod zapisany w skrypcie przetwarzany jest przez silnik zawarty w przeglądarce. Silniki te różnią się w zależności od przeglądarki. Składają się one z **Interpreter** oraz **Compiler (JiT)**. Interpretor przekauje bytecode do compilera a ten przetwarza go na kod maszynowy. Dzieje się to pratycznie współbierznie. Silniki stosują kilka technik optymalizacji np. w przypadku kodu, który pozostaje bez zmian. 
+
+### Przestrzeń w pamięci
+**Heap** przechowuje dane w pamięci **długotrwale**
+**Stack** pamięć krótkotrwała, zarządza przepływem danych w programie takim jak wywołanie funkcji. Która funkcja jest obecnie wykonywana, jeżeli zwraca wartość to do której funkcji. Stack zarządza '_co dzieje się w programie_'.  
+  
+Drfinicja funkcji przechowywana jest w heap, a wywołanie w stack. Wywołanie to zostaje usunięte ze stack w moemencie, gdy funkcja zakończy swoje działanie. 
