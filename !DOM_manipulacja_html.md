@@ -73,3 +73,21 @@ Atrybut `value` działa tylko w jedną stronę. Możemy się do niego odwołać 
 ### Metody  DOM Traversal
 Są szybsze od `querySelector'ów` i pozwalają dostać się do sąsiednich elementów.
 Są to metody zaczynające się od 'next', 'previous', 'first' itp. 
+
+## Dodawanie i usuwanie elementów z drzewa DOM
+
+### Tworzenie i wstawianie elementów
+- `createElement('div')` pozwala stworzyć nowy element node. Wywoływana na `document`.  
+- `append()` oraz `appendChild()` pozwalają dodać element do innego. 
+- `prepend`, `before`, `after`, `insertBefore` wstawiają element w określone mejsce.
+- `replaceChild`, `replaceWith` zamieniają element/node na inny.  
+  
+Można również tworzyć i wstawiać nowe elementy poprzez metodę `innerHTML` np. `element.innerHTML = '<h2>Hi</h2>';` To podejśćie **nie dodaje** nowego elementu, ale **podmienia poprzednie** Można daodać nową zawartość poprzez konkatenację. 
+
+## Stylowanie elementów HTML 
+- `style` najzyższe specificity
+- `className` można dodawać, usuwać klasy. Jeden string zawierający **wszystkie** klasy
+- `classList` zwraca tablicę wszystkich klas
+
+Dodatkowo metoda `classList.toggle('klasa)` pozwala dodać klasę jeżeli jej nie ma lub usunąć, jeżeli jest zawarta.  
+  
