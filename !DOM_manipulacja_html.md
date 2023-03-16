@@ -69,3 +69,7 @@ Atrybut `value` działa tylko w jedną stronę. Możemy się do niego odwołać 
 - `previosSibling` zaznacza sąsiedni, poprzedni **node**
 - `previosElementSibling` zaznacza sąsiedni, poprzedni **element**
 - `nextSibling` oraz `nextElementSibling` jak powyżej, ale sąsiedni, następny.
+
+### Metody  DOM Traversal
+Są szybsze od `querySelector'ów` i pozwalają dostać się do sąsiednich elementów.
+Są to metody zaczynające się od 'next', 'previous', 'first' itp. 
