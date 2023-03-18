@@ -84,10 +84,36 @@ Są to metody zaczynające się od 'next', 'previous', 'first' itp.
   
 Można również tworzyć i wstawiać nowe elementy poprzez metodę `innerHTML` np. `element.innerHTML = '<h2>Hi</h2>';` To podejśćie **nie dodaje** nowego elementu, ale **podmienia poprzednie** Można daodać nową zawartość poprzez konkatenację. 
 
+Metoda `append` pozwala w prosty sposób tworzyć text node.
+Metoda `prepend` doda nowy obiekt na poczatk, na przyklad nowe li na poczatek listy ul. Można też zaznaczyć konkretny element li i wywolac na nim metodę `before` aby wstawic nowe li przed niego, na przykład na trzecie miejsce.  
+  
+Inną, szalenie pożyteczną metodą jest [insertAdjacentElement](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentElement). Pozwala ona na łatwe manipulowanie miejscem w które chcemy wstawić nowy element.
+
+```
+const list = document.querySelector("ul");
+const secondLi = list.children[1];
+const newLi = document.createElement("li");
+newLi.textContent = "New Li"
+secondLi.insertAdjacentElement("afterend", newLi);
+```
+
+### Klonowanie elementów
+Metoda `cloneNode(boolean)` pozwala klonować elementy. Boolean to argument oznaczający **deep clone**. Z opcją `true` sklonuje również zagnieżdżone nody. 
+`const newLi = liElement.cloneNode(true)`
+
+### Usuwanie elementów
+Usuwać obiekty możemy z pomocą metody `element.ewmove()` usuwa element, na którym metoda została wywołana. Niewspierane przez IE. Nieco prawilniejszym sposobem jest usuwanie elementu poprzez `removeChild` wywołana na elemencie rodzica. Jeżeli element rodzica nie jest znany z uwagni na dynamiczne zachowanie drzewa DOM, można to osiągnąc w sprytny sposób: 
+```
+const list = document.querySelector('ul');
+list.parentElement.removeChild(list)
+```
+
+Dodatkowo istnieje metoda `replaceWith(nowy_element)` pozwalająca podmienić element na inny.
+
 ## Stylowanie elementów HTML 
 - `style` najzyższe specificity
 - `className` można dodawać, usuwać klasy. Jeden string zawierający **wszystkie** klasy
 - `classList` zwraca tablicę wszystkich klas
 
-Dodatkowo metoda `classList.toggle('klasa)` pozwala dodać klasę jeżeli jej nie ma lub usunąć, jeżeli jest zawarta.  
+Dodatkowo metoda `classList.toggle('klasa)` pozwala dodać klasę jeżeli jej nie ma lub usunąć, jeżeli jest zawarta. 
   
