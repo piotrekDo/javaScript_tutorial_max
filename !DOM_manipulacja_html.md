@@ -84,7 +84,8 @@ Są to metody zaczynające się od 'next', 'previous', 'first' itp.
   
 Można również tworzyć i wstawiać nowe elementy poprzez metodę `innerHTML` np. `element.innerHTML = '<h2>Hi</h2>';` To podejśćie **nie dodaje** nowego elementu, ale **podmienia poprzednie** Można daodać nową zawartość poprzez konkatenację. 
 
-Metoda `append` pozwala w prosty sposób tworzyć text node.
+Metoda `append` pozwala w prosty sposób tworzyć text node. Można też 'dokleić' tekst:
+`someElement.textContent = someElement.textContent + 'More text!';`
 Metoda `prepend` doda nowy obiekt na poczatk, na przyklad nowe li na poczatek listy ul. Można też zaznaczyć konkretny element li i wywolac na nim metodę `before` aby wstawic nowe li przed niego, na przykład na trzecie miejsce.  
   
 Inną, szalenie pożyteczną metodą jest [insertAdjacentElement](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentElement). Pozwala ona na łatwe manipulowanie miejscem w które chcemy wstawić nowy element.
