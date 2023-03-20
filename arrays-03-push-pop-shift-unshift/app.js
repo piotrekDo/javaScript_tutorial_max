@@ -26,9 +26,32 @@
 
 // console.log(personalData[1]);
 
-const hobbies = ['Sports', 'Cooking'];
-hobbies.push('Reading');
-hobbies.unshift('Coding');
-const poppedValue = hobbies.pop();
-hobbies.shift();
-console.log(hobbies);
+// const hobbies = ['Sports', 'Cooking'];
+// hobbies.push('Reading');
+// hobbies.unshift('Coding');
+// const poppedValue = hobbies.pop();
+// hobbies.shift();
+// console.log(hobbies);
+
+// const prices = [10.99, 5.99, 3.99, 5.59];
+// const tax = 0.19;
+// const taxAdjustedPrices = [];
+
+// const sorted = prices.sort((a, b) => {
+//   if (+a > +b) return -1;
+//   else return 1;
+// });
+
+// console.log(sorted);
+
+// const sum = prices.reduce((prev, current, curIndex, prices) => {
+//   return prev + current;
+// }, 0);
+
+// console.log(sum);
+
+const data = 'new york;10.99;2000'
+const transformedData = data.split(";");
+
+const nameFragments = ['one', 'two'];
+const result = nameFragments.join(" ");

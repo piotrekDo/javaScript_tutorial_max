@@ -56,3 +56,58 @@ Metoda `splice` zwraca tablicę z usuniętymi elementami. Jako pierwszy argument
 ### Splice- zaznaczanie i kopiowanie tablicy.
 
 Samo wywolanie metody `slice` zwraca kopię tablicy na której zostało wywołane. Można zaznaczać fragmenty tablicy, przekaując argumenty. Dwa argumenty to indexy start oraz end. **index end nie wlicza się w wyniki**. Wywołanie `splice(0, 2)` zwróci elementy 0,1. Można przekazywać wartoći ujemne, aby zaznaczać od prawej strony. Przekazanie jednego argumentu oznacza index start do końca tablicy. 
+
+## Tablice, programowanie funkcyjne
+Dla przykładu:
+```
+const prices = [10.99, 5.99, 3.99, 5.59];
+const tax = 0.19;
+const taxAdjustedPrices = [];
+```
+
+- ***`forEach`***  zastępuje pętlę for-of, funkcja przyjmuje do 3 argumentów: obiekt_z_tablicy, index, tablica. Uzyskujemy dostęp do indexu, czego nie ma w pętli for of:
+    ```
+    prices.forEach((price, index, prices) => {
+        const priceObj = {index: index, taxAdjPrice: price * (1+tax)};
+        taxAdjustedPrices.push(priceObj);
+    })
+    ```
+
+- ***`map`*** zwraca nowy obiekt, dla każdego w tablicy. Zaraca nową tablicę. Również przyjmuje 3 argumenty:
+    ```
+    taxAdjustedPrices = prices.map((price, index, prices) => {
+        const priceObj = {index: index, taxAdjPrice: price * (1+tax)};
+        return priceObj;
+    })
+    ```
+
+- ***`sort`*** sortowanie domyślnie zamienia wartości na string i porównuje je leksykalnie, dlatego 10 jest mniejsze niż 2- komparator porównuje pierwszy znak. Funkcja przyjmuje 2 argumenty oznaczające 2 obiekty z tablicy.
+    ```
+    const sortedPrices = const sorted = prices.sort((a, b) => {
+        if (+a > +b) return -1;
+        else return 1;
+    });
+    ```
+
+- ***`reverse`*** odwraca kolejność w tablicy.
+
+- ***`filter`***  zwraca nową tablicę, przyjmuje 3 argumenty: obiekt_z_tablicy, index, tablica i musi zwrócić true/false
+
+- ***`reduce`*** funkcja przyjmuje argumenty: prev_value, current_value, index, tablica. Najczęściej operujemy na 2 pierwszych w celu skumulowania wyniku. Jako drugi argument **metody reduce** możemy przekazać wartość początkową. W ciele funkcji zwracamy uaktualnioną wartość na daną iterację:
+    ```
+    const sum = prices.reduce((prev, current, curIndex, prices) => {
+    return prev + current;
+    }, 0);
+    ```
+
+- ***`split i join`*** metody wykorzystywane na String.
+    metoda split zwróci tablicę z elementami rozdzielonymi separatorem przekazanym jako argument. 
+    ```
+    const data = 'new york;10.99;2000'
+    const transformedData = data.split(";"), opcjonalny_limit;
+    ```
+    metoda join zwróci znak, domyślnym argumentem jest przecinek
+    ```
+    const nameFragments = ['one', 'two'];
+    const result = nameFragments.join(" ");
+    ```
