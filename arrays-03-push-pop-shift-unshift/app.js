@@ -50,8 +50,13 @@
 
 // console.log(sum);
 
-const data = 'new york;10.99;2000'
-const transformedData = data.split(";");
+// const data = 'new york;10.99;2000'
+// const transformedData = data.split(";");
 
-const nameFragments = ['one', 'two'];
-const result = nameFragments.join(" ");
+// const nameFragments = ['one', 'two'];
+// const result = nameFragments.join(" ");
+
+
+// const persons = [{name: 'Max', age: 30}, {name: 'Manuel', age: 31}, {name: 'Anna', age: 29}];
+// const copiedPersons = [...persons.map(person => ({name: person.name, age: person.age}))];
+

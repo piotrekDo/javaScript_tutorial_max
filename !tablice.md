@@ -111,3 +111,83 @@ const taxAdjustedPrices = [];
     const nameFragments = ['one', 'two'];
     const result = nameFragments.join(" ");
     ```
+
+## Spread operator- ...
+Operator trzech kropek 'wyciąga' dane z tablicy. Nie możemy ich przypisać do żadnej zmiennej, nie miałoby to sensu. Może być przydatne przy kopiowaniu tablicy. 
+
+Poniższy przykład pokazuje jak **nie kopiować** tablicy. Wówczas uzyskamy tablicę jednoelementową z zagnieżdżoną tablicą:
+```
+const nameFragments = ['one', 'two'];
+const notCopied = [nameFragments]
+```
+
+Zamiast tego można wykorzystać operator '...'
+```
+const copiedArray = [...nameFragments];
+```
+
+Innym przykładem mogą być funkcje, wymagające przekazania wielu argumentów, ale **nie w postaci tablicy** np.
+```
+const prices = [10.99, 5.99, 3.99, 5.59];
+Math.min(...prices)
+```
+w przypadku gdy do funkcji `min` przekażemy tablicę `prices` w wyniku otrzymamy NaN.
+
+### Kopiowanie tablic z obiektami
+
+W poniższym przykładzie kopiujemy tablicę jako nową i następne zmiany na referencji `persons` nie będą miały odbicia na `copiedPersons` ale należy pamietać, że jest to tablica **referencji**. Zatem dalsze zmiany na jednym z obiektów zawartych w `persons` zmienią **ten sam** obiekt w tablicy `copiedPersons`.
+```
+const persons = [{name: 'Max', age: 30}, {name: 'Manuel', age: 31}, {name: 'Anna', age: 29}];
+const copiedPersons = [...persons];
+
+persons[0].age = 99;  <------------- ZMIANA DOTYCZY ROWNIEŻ OBIEKTU W SKOPIOWANEJ TABLICY
+```
+
+Chcąc wykonać 'głęboką' kopię i skopiować również zawarte obiekty można wykonać trick
+```
+const copiedPersons = [...persons.map(person => ({name: person.name, age: person.age}))];
+```
+
+Wykorzystujemy metodę `map` aby utworzyć obiekt na podstawie poprzedniego. 
+
+### Destrukturyzacja tablicy
+Stanowi uproszczenie do przypisania elementów tablicy do zmiennych, dla przykładu:
+```
+const nameData = ['Max', 'Schwarz', 'Mr', 30];
+```
+
+Można przypisać 'ręcznie' do zmiennych:
+```
+const firstName = nameData[0];
+const lastname = nameData[1];
+```
+
+Zamiast tego można zastosować **destrukturyzację tablicy**
+```
+const [firstName, lastName, ..otherInfo] = nameData;
+```
+
+Wówczas w 'tablicy z nazwami' nadajemy nazwy do kolejnych elementów tablicy. I do tych nazw mozemy odwołać się w kodzie, tak samo jak do zmiennych. Do nazwy `otherInformation` można przypisać tablicę z pozostałymi danymi.
+
+
+## Sety w JavaScript
+W odróżnieniu od tablic, zbiory nie gwarantują zachowania kolejności i zapewniają unikalnośc elementów- nie dopuszczają duplikatów. Zbiory tworzymy **wyłącznie** poprzez konstruktor `const ids = new Set()` tak utowrzony set bedzie pusty, do konstruktora można przekazać inną strukturę danych, np. tablicę. Dostęp do danych uzyskujemy poprzez iteracje, posiada metodę `has` przyjmującą obiekt i zwraca true/false. Nie posiada metody `get`. Przy iteracji działa jak mapa. Iterujemy po obiektach uzyskanych za pomocą metody `entries`
+```
+for (const entry of ids.entries()){
+    console.log(entry)
+}
+```
+w rezultacie daje tablice dwuelementowe w postaci [klucz, wartosć]. Klucze są **wartościami**. Set to pod maską mapa i w taki sposób zapewnia brak unikatów- klucze muszą być unikalne. Można również iterować po danychzwróconych z metody `values()` Dane usuwamy z pomocą metody `delete(obiekt)`.
+
+Istnieje również `new WeakSet()`, może przechowywać tylko obiekty, nie liczby i nie string. Różni się tym, że nie kopiuje(?) referencji do obiektu. Jeżeli przechowujemy w zbiorze obiekt, który ustawimy na null. Nie zostanie on usunięty jeżeli jest on częścią zwykłego zbioru, w przypadku WeakSet obiekt ten zostanie usunięty przez garbage collector. 
+
+## Mapy
+Przechowują pary wartośći klucz:wartość. Obiekty w JS również są mapami z tą różnicą, że obiekty mogą posiadać klucze jedynie w postaci string lub number, mapy mogą miecz klucze zdefiniowane z jakiegokolwiek obiektu, nawet z tablic. Nie gwarantują kolejności, klucze nie mogą się duplikować, wartości tak. Mapy tworzymy przez konstruktor `const data = new Map()` dane pobieramy metodą `get(klucz)`, dodajemy metodą `set(klucz, wartość)`.
+Można iterować po `map.entries()`, `map.values()`, `map.keys()`. Przy okazcji mapowanie po `entries` można zastosować destrukturyzację:
+```
+for (const [key, value] of someMap.entries()) {
+    console.log(key, value);
+}
+```
+
+Istnieje również `WeakMap` spełniający te same założenia co WeakSet. 
