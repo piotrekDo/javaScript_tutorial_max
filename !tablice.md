@@ -22,9 +22,24 @@ W przeciwieństwie do Java, tablice mogą przechowywać dane róznego typu. Dopu
 
 - **`unshift`** dodaje nowy element do tablicy **zawsze na początek**. Zwraca liczbę całkowitą, reprezentującą nową długość tablicy.
 
+- **`concat`** przyjmuje tablicę, której zawartość łączy z tablica na której wywołujemy metodę. **Zwraca nową tablicę** i nie modyfikuje wykorzystanych tablic. 
+
 - **`pop`** usuwa ostani element z tablicy, nie wymaga argumentu. Zwraca usunięty element, można przypisać do zmiennej.
 
 - **`shift`** usuwa pierwszy element z tablicy, nie wymaga argumentu.
+
+- **`indexOf`** przyjmuje wartość i zwraca jej index w tablicy. Zwraca -1 jeżeli nie została odnaleziona. Zwraca pierwszą trafioną wartość, nie szuka dalej. **Nie działa dla referencji**. Przekazanie obiektu powoduje tworzenie nowego obiektu, więc porównanie nie zadziała. 
+
+- **`find`** przyjmuje funkcję jako argument. Funkcja ta przyjmuje do 3 argumentów. Pierwszym jest element z tablicy, drugim jest index, trzecim jest cala tablica. 
+    ```
+    const perstonData = [{name: 'Max'}, {name: 'Manuel'}];
+    const manuel = personData.find((person, index, persons) => {
+        return person.name === 'Manuel';
+    })
+    ```
+    Zwróci pierwsze trafienie, jezeli potrzebujemy możemy odowłać się do indexu lub całej tablicy, którą przeszukujemy. Zwraca **referencję**, zmiany na niej odbiją się na obiekcie chowanym w tablicy. Nie jest to osobny obiekt.  
+
+- **`findIndex`** działa tak samo jak `find`, zwraca index, zamiast referencji do obiektu
 
 
 Dodawanie elementów na index wykraczający poza obecną długość tablisy spowoduje powstanie obiektów `undefined`. Jeżeli mamy tablicę 2-elementową i dodamy coś na index 5, pola 2,3,4 będą `undefined`.
@@ -40,4 +55,4 @@ Metoda `splice` zwraca tablicę z usuniętymi elementami. Jako pierwszy argument
 
 ### Splice- zaznaczanie i kopiowanie tablicy.
 
-
+Samo wywolanie metody `slice` zwraca kopię tablicy na której zostało wywołane. Można zaznaczać fragmenty tablicy, przekaując argumenty. Dwa argumenty to indexy start oraz end. **index end nie wlicza się w wyniki**. Wywołanie `splice(0, 2)` zwróci elementy 0,1. Można przekazywać wartoći ujemne, aby zaznaczać od prawej strony. Przekazanie jednego argumentu oznacza index start do końca tablicy. 
