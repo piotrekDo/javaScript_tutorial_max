@@ -132,3 +132,5 @@ Można również sprawdzić za pomocą porówniania do `undefined` lub jako _tru
     }
     ```
     `return this.info.title.toUpperCase();` oznacza pole title z samego obiektu
+
+**Funkcje strzałkowe 'nie znają' this!** zastosowanie slowa this wewnątrz funkcji strzałkowej nie przyniesie efektu. Odwołają się do otaczającego obiketu (?), do klasy(?)
