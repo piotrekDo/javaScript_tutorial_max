@@ -113,8 +113,14 @@ const sumUp = (...args) => {
 Callback to funkcja przekazana jako argument innej funkcji. Funkcji takiej nie wywołujemy z zapisaem '()'.
 
 ## Funkcja bind()
-Pozesls ns przekazanie argumentów do metody, bez jej wywołania. Na przykład w sytuacji, gdzie chcemy przekazać funkcję jako argument, ale ona sama wymaga argumentów. Mtoda bind przyjmuje dwa argumenty= this(?) i drugi to rest operator pozwalający przekazać dowolną liczbę argumentów, zgodnie z funkcją. 
+Pozesls ns przekazanie argumentów do metody, bez jej wywołania. Na przykład w sytuacji, gdzie chcemy przekazać funkcję jako argument, ale ona sama wymaga argumentów. Mtoda bind przyjmuje dwa argumenty= this(?) i drugi to rest operator pozwalający przekazać dowolną liczbę argumentów, zgodnie z funkcją.
+*Jako pierwszy argument przekazaujemy obiekt, do którego nawiązuje słowo 'this'* 
 
 
 [MDN funkcje](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions)  
 [MDN Bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind)
+
+### Call()
+Podobnie jak bind pozwala prekonfiurować metodę, pozwala ustalić czym jest this, wewnątrz metody, przyjmuje też argumenty, które zastosuje do parametrów. W odróżnieniu od bind, call wykonuje się odrazu. Bind ustawia metodę pod wykoannie w przyszłości. 
+
+Apply() działa tak samo jak call, jednak zamiast varargs argumentów przyjmuje tablicę. 

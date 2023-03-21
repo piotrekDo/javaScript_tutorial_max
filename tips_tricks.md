@@ -11,4 +11,14 @@ document.addEventListener('keydown', (event) => {
   }, false);
 ```
 
+Przypisujemy na elemencie **document** dla globalnego efektu, alebo na konkretnym inpucie :
+```
+const filterInput = document.getElementById('filter-title');
+
+filterInput.addEventListener('keydown', (event) => {
+  var name = event.key;
+  if (name === 'Enter') filterMoviesHandler();
+});
+```
+
 

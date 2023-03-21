@@ -24,9 +24,9 @@ W przeciwieństwie do Java, tablice mogą przechowywać dane róznego typu. Dopu
 
 - **`concat`** przyjmuje tablicę, której zawartość łączy z tablica na której wywołujemy metodę. **Zwraca nową tablicę** i nie modyfikuje wykorzystanych tablic. 
 
-- **`pop`** usuwa ostani element z tablicy, nie wymaga argumentu. Zwraca usunięty element, można przypisać do zmiennej.
+- **`pop`** usuwa ostani element z tablicy, nie wymaga argumentu. **Zwraca usunięty element**, można przypisać do zmiennej.
 
-- **`shift`** usuwa pierwszy element z tablicy, nie wymaga argumentu.
+- **`shift`** usuwa pierwszy element z tablicy, nie wymaga argumentu. **Zwraca usunięty element**
 
 - **`indexOf`** przyjmuje wartość i zwraca jej index w tablicy. Zwraca -1 jeżeli nie została odnaleziona. Zwraca pierwszą trafioną wartość, nie szuka dalej. **Nie działa dla referencji**. Przekazanie obiektu powoduje tworzenie nowego obiektu, więc porównanie nie zadziała. 
 
