@@ -30,3 +30,12 @@ function mockData() {
     },
   ];
 }
+
+const getterSetterMovie = {
+  set title(val) {
+    this._title = val ? val : 'default';
+  },
+  get title() {
+    return this._title;
+  },
+};

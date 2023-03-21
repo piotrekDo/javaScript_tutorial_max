@@ -134,3 +134,20 @@ Można również sprawdzić za pomocą porówniania do `undefined` lub jako _tru
     `return this.info.title.toUpperCase();` oznacza pole title z samego obiektu
 
 **Funkcje strzałkowe 'nie znają' this!** zastosowanie slowa this wewnątrz funkcji strzałkowej nie przyniesie efektu. Odwołają się do otaczającego obiketu (?), do klasy(?)
+
+## Gettery i Settery
+Zapisywane wewnątrz obiektu z użyciem słów `get` i `set`. Zastępują props. Więc zapisując getter i setter dla pola title **nie zapisujemy** samego title, a uzyskujemy do niego dostęp przez metody  
+`getterSetterMovie.movie` wywoła getter  
+`getterSetterMovie.movie = 'new value'` wywoła setter
+```
+const getterSetterMovie = {
+  set title(val) {
+    this._title = val ? val : 'default';
+  },
+  get title() {
+    return this._title;
+  },
+};
+```
+
+Zapisanie samego settera, bez gettera pozwala na uzyskanie wartości *read only*. Nie mamy możliwości jej nadpisania bez gettera. 
