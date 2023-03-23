@@ -49,3 +49,35 @@ const getterSetterMovie = {
 ```
 
 Zapisanie samego settera, bez gettera pozwala na uzyskanie wartości *read only*. Nie mamy możliwości jej nadpisania bez gettera. 
+
+## Dziedziczenie w JavaScript
+Podobnie jak w Java, stosujemy słowo `extends`, każda klasa może dziedziczyc tylko po jednej klasie. Jeżeli subklasa nie posiada konstruktora, wywołany zostanie konstruktor z rodzica. Zapisując konstruktor w subklasie należy pamiętać o `super` i dostarczeniu mu wymaganych argumentów. `super` musi być pierwsze. 
+```
+class ProductItem extends Component {
+  constructor(product, renderHookId) {
+    super(renderHookId);
+    this.product = product;
+  }
+
+  addToCart() {
+    App.addProductToCart(this.product);
+  }
+
+  render() {
+    const prodEl = this.createRootElement('li', 'product-item');
+    prodEl.innerHTML = `
+        <div>
+          <img src="${this.product.imageUrl}" alt="${this.product.title}" >
+          <div class="product-item__content">
+            <h2>${this.product.title}</h2>
+            <h3>\$${this.product.price}</h3>
+            <p>${this.product.description}</p>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+      `;
+    const addCartButton = prodEl.querySelector('button');
+    addCartButton.addEventListener('click', this.addToCart.bind(this));
+  }
+}
+```
