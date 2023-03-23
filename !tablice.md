@@ -53,9 +53,9 @@ przyjmuje 2 lub więcej argumentów. Pozwala między innymi wstawiać elementy m
   
 Metoda `splice` zwraca tablicę z usuniętymi elementami. Jako pierwszy argument można przekazać liczbę ujemną. Wówczas wyznaczamy index od końca. Argument '-1' oznacza ostatni index.
 
-### Splice- zaznaczanie i kopiowanie tablicy.
+### Slice- zaznaczanie i kopiowanie tablicy.
 
-Samo wywolanie metody `slice` zwraca kopię tablicy na której zostało wywołane. Można zaznaczać fragmenty tablicy, przekaując argumenty. Dwa argumenty to indexy start oraz end. **index end nie wlicza się w wyniki**. Wywołanie `splice(0, 2)` zwróci elementy 0,1. Można przekazywać wartoći ujemne, aby zaznaczać od prawej strony. Przekazanie jednego argumentu oznacza index start do końca tablicy. 
+Samo wywolanie metody `slice` zwraca kopię tablicy na której zostało wywołane. Można zaznaczać fragmenty tablicy, przekaując argumenty. Dwa argumenty to indexy start oraz end. **index end nie wlicza się w wyniki**. Wywołanie `slice(0, 2)` zwróci elementy 0,1. Można przekazywać wartoći ujemne, aby zaznaczać od prawej strony. Przekazanie jednego argumentu oznacza index start do końca tablicy. 
 
 ## Tablice, programowanie funkcyjne
 Dla przykładu:

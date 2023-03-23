@@ -49,23 +49,26 @@ class ShoppingCart extends Component {
 
   set cartItems(value) {
     this.items = value;
-    this.totalOutput.innerHTML = `<h2>Total: \$${this.totalAmount.toFixed(
-      2
-    )}</h2>`;
+    this.totalOutput.innerHTML = `<h2>Total: \$${this.totalAmount.toFixed(2)}</h2>`;
   }
 
   get totalAmount() {
-    const sum = this.items.reduce(
-      (prevValue, curItem) => prevValue + curItem.price,
-      0
-    );
+    const sum = this.items.reduce((prevValue, curItem) => prevValue + curItem.price, 0);
     return sum;
   }
 
   constructor(renderHookId) {
     super(renderHookId, false);
     this.orderProducts = () => {
-      console.log('Ordering...');
+      const orderBtn = document.getElementById('order-btn');
+      const spinner = document.querySelector('.lds-roller');
+      orderBtn.style.display = 'none';
+      spinner.style.display = 'block';
+      setTimeout(() => {
+        orderBtn.style.display = 'block';
+        spinner.style.display = 'none';
+      }, 1500)
+      console.log("Ordering...");
       console.log(this.items);
     };
     this.render();
@@ -78,15 +81,16 @@ class ShoppingCart extends Component {
   }
 
   render() {
-    const cartEl = this.createRootElement('section', 'cart');
+    const cartEl = this.createRootElement("section", "cart");
     cartEl.innerHTML = `
-      <h2>Total: \$${0}</h2>
-      <button>Order Now!</button>
+    <h2>Total: \$${0}</h2>
+    <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    <button id="order-btn">Order Now!</button>
     `;
-    const orderButton = cartEl.querySelector('button');
+    const orderButton = cartEl.querySelector("button");
     // orderButton.addEventListener('click', () => this.orderProducts());
-    orderButton.addEventListener('click', this.orderProducts);
-    this.totalOutput = cartEl.querySelector('h2');
+    orderButton.addEventListener("click", this.orderProducts);
+    this.totalOutput = cartEl.querySelector("h2");
   }
 }
 
@@ -102,7 +106,7 @@ class ProductItem extends Component {
   }
 
   render() {
-    const prodEl = this.createRootElement('li', 'product-item');
+    const prodEl = this.createRootElement("li", "product-item");
     prodEl.innerHTML = `
         <div>
           <img src="${this.product.imageUrl}" alt="${this.product.title}" >
@@ -114,8 +118,8 @@ class ProductItem extends Component {
           </div>
         </div>
       `;
-    const addCartButton = prodEl.querySelector('button');
-    addCartButton.addEventListener('click', this.addToCart.bind(this));
+    const addCartButton = prodEl.querySelector("button");
+    addCartButton.addEventListener("click", this.addToCart.bind(this));
   }
 }
 
@@ -131,31 +135,29 @@ class ProductList extends Component {
   fetchProducts() {
     this.#products = [
       new Product(
-        'A Pillow',
-        'https://www.maxpixel.net/static/photo/2x/Soft-Pillow-Green-Decoration-Deco-Snuggle-1241878.jpg',
-        'A soft pillow!',
+        "A Pillow",
+        "https://www.maxpixel.net/static/photo/2x/Soft-Pillow-Green-Decoration-Deco-Snuggle-1241878.jpg",
+        "A soft pillow!",
         19.99
       ),
       new Product(
-        'A Carpet',
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Ardabil_Carpet.jpg/397px-Ardabil_Carpet.jpg',
-        'A carpet which you might like - or not.',
+        "A Carpet",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Ardabil_Carpet.jpg/397px-Ardabil_Carpet.jpg",
+        "A carpet which you might like - or not.",
         89.99
-      )
+      ),
     ];
     this.renderProducts();
   }
 
   renderProducts() {
     for (const prod of this.#products) {
-      new ProductItem(prod, 'prod-list');
+      new ProductItem(prod, "prod-list");
     }
   }
 
   render() {
-    this.createRootElement('ul', 'product-list', [
-      new ElementAttribute('id', 'prod-list')
-    ]);
+    this.createRootElement("ul", "product-list", [new ElementAttribute("id", "prod-list")]);
     if (this.#products && this.#products.length > 0) {
       this.renderProducts();
     }
@@ -168,8 +170,8 @@ class Shop {
   }
 
   render() {
-    this.cart = new ShoppingCart('app');
-    new ProductList('app');
+    this.cart = new ShoppingCart("app");
+    new ProductList("app");
   }
 }
 

@@ -155,3 +155,16 @@ Zapisanie samego settera, bez gettera pozwala na uzyskanie wartości *read only*
 ## Object.getOwnPropertyDescriptors
 Zwraca metadane dotyczące obiektu i jego pól
 `Object.getOwnPropertyDescriptors(referencjaObiektu)`
+
+## Constructor Functions
+Substytut dla klasy. Zapisujemy z wykorzystaniem słowa `function`. Wewnątrz takiej funkcji ustanawiamy propsy z wykorzystaniem słowa `this`. Następnie gdy wywołamy taką funkcję ze słowem `new`, otrzymamy obiekt. Funkcja taka może jak najbardziej przyjmować argumenty i na ich podstawie ustanawiać propsy. Nazwa propsa i argumentu nie muszą być 1:1.
+```
+function Person() { 
+    this.name = 'Max';
+    this.age = 30;
+    this.greet = function() {
+        console.log('Hi I'm ' + this.name + ' and I'm ' + this.age + ' years old.' )
+    };
+}
+```
+W rezultacie możemy z tego stworzyć obiekt `const person = new Person()`
