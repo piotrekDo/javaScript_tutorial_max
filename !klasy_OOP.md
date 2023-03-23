@@ -50,6 +50,12 @@ const getterSetterMovie = {
 
 Zapisanie samego settera, bez gettera pozwala na uzyskanie wartości *read only*. Nie mamy możliwości jej nadpisania bez gettera. 
 
+### Pola prywatne
+Możemy ograniczyć pole na prywatne, dopisując do niego '#' np. `#items` tak samo należy się do niego odowływać w kodzie- z uwzględnieniem '#' `const total = this.#items.reduce((prevVal, nextItem) => prevVal + nextItem.price, 0);`.  
+Można stosować również na metodach- **może nie posiadać wsparcia w przeglądarkach**.  
+  
+Istnieje również konwencja nazewnictwa, gdzie pola prywatne poprzedzane były znakiem '_' `_items`. Oznaczającym, że pole jest prywatne i nie powinno się do niego odnosić spoza klasy. Jest to jednak tylko konwencja i JS nie potraktuje takiego pola jako prywatnego. 
+
 ## Dziedziczenie w JavaScript
 Podobnie jak w Java, stosujemy słowo `extends`, każda klasa może dziedziczyc tylko po jednej klasie. Jeżeli subklasa nie posiada konstruktora, wywołany zostanie konstruktor z rodzica. Zapisując konstruktor w subklasie należy pamiętać o `super` i dostarczeniu mu wymaganych argumentów. `super` musi być pierwsze. 
 ```
@@ -81,3 +87,4 @@ class ProductItem extends Component {
   }
 }
 ```
+
