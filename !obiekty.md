@@ -151,3 +151,7 @@ const getterSetterMovie = {
 ```
 
 Zapisanie samego settera, bez gettera pozwala na uzyskanie wartości *read only*. Nie mamy możliwości jej nadpisania bez gettera. 
+
+## Object.getOwnPropertyDescriptors
+Zwraca metadane dotyczące obiektu i jego pól
+`Object.getOwnPropertyDescriptors(referencjaObiektu)`
