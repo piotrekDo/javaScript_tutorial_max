@@ -32,3 +32,20 @@ class Product {
 
 ### Klasy w JavaScript mogą zawierać pola i metody statyczne
 Podobnie jak w Java, nie mamy dostępu do pól i metod klasy, której obiktu nie utworzyliśmy. Metody i pola statyczne działają jak w Java wywoływane przez `NazwaKlasy.pole`
+
+## Gettery, Settery
+Zapisywane wewnątrz obiektu z użyciem słów `get` i `set`. Zastępują props. Więc zapisując getter i setter dla pola title **nie zapisujemy** samego title, a uzyskujemy do niego dostęp przez metody  
+`getterSetterMovie.movie` wywoła getter  
+`getterSetterMovie.movie = 'new value'` wywoła setter
+```
+const getterSetterMovie = {
+  set title(val) {
+    this._title = val ? val : 'default';
+  },
+  get title() {
+    return this._title;
+  },
+};
+```
+
+Zapisanie samego settera, bez gettera pozwala na uzyskanie wartości *read only*. Nie mamy możliwości jej nadpisania bez gettera. 

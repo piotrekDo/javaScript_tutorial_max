@@ -18,9 +18,7 @@ class ShoppingCart {
   addProduct(product) {
     this.items.push(product);
     console.log(this.items);
-    const total = this.items
-      .map((item) => item.price)
-      .reduce((a, b) => a + b, 0);
+    const total = this.items.reduce((prevVal, nextItem) => prevVal + nextItem.price, 0);
     this.totalOutput.innerHTML = `<h2>Total: \$${total.toFixed(2)}</h2>`;
   }
 

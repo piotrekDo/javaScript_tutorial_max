@@ -95,8 +95,8 @@ const taxAdjustedPrices = [];
 
 - ***`reduce`*** funkcja przyjmuje argumenty: prev_value, current_value, index, tablica. Najczęściej operujemy na 2 pierwszych w celu skumulowania wyniku. Jako drugi argument **metody reduce** możemy przekazać wartość początkową. W ciele funkcji zwracamy uaktualnioną wartość na daną iterację:
     ```
-    const sum = prices.reduce((prev, current, curIndex, prices) => {
-    return prev + current;
+    const sum = prices.reduce((prevValue, nextItem, curIndex, prices) => {
+    return prevValue + nextItem.value;
     }, 0);
     ```
 
