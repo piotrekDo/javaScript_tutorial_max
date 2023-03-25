@@ -118,3 +118,9 @@ Dodatkowo istnieje metoda `replaceWith(nowy_element)` pozwalająca podmienić el
 
 Dodatkowo metoda `classList.toggle('klasa)` pozwala dodać klasę jeżeli jej nie ma lub usunąć, jeżeli jest zawarta. 
   
+## Dostęp do atrybutów 'data-'
+W ramach kodu HTML elementy mogą posiadać adtrybuty `data-whatever`. Możemy odwołać się do nich poprzez metodę `.dataset` wywołaną na elemencie pobranym z drzewa DOM. Metoda zwraca *DOMStringMap* rodzaj mapy przechowującej dane whatever:przypisane_dane. Można w ten sposób przypisać też nowe atrybuty `data-` poprzez `element.dataset.SomeInfo = 'Test'`
+
+## element.getBoundingClientRect()
+zwraca dane z pozycją elementu. Odwołanie do tych danych pozwala dalej manipulować elementem. 
+***`window.innerWidth`*** oraz ***`window.innerHeigth`*** zwracają odpowiednio aktualną wysokość i szerokość okna. Odowłanie do ***`document.documentElement.clientWidth`*** oraz ***`document.documentElement.clientWidth`*** zwracająpodobne wartośći, ale uwzględniające scroll. Więcej na MDN odnośnie ELement i pochodnych. 
