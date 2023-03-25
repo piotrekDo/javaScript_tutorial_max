@@ -60,3 +60,14 @@ button.addEventListener('mouseenter', event => {
 });
 ```
 dodatkowo, metoda `stopImmediatePropagation()` powstrzyma inne listenery zapisane na tym samym elemencie 
+
+## Event delegation
+Pozwala zapisać jeden listener zamiast wielu. W sytuacji, gdzie mamy wiele elementów `li` wewnątrz `ul` musielibyśmy pisać event osobno dla każdego elementu `li` Dzięki propagacji zadziała nam kliknięcie w dowolny element znajdujący się wewnątrz listy:
+
+```
+list.addEventListener('click', function(event) {
+  event.target.closest('li').classList.toggle('highlight');
+});
+```
+
+Odowłanie do `event.currentTarget` wywołałoby faktyczną listę zamiast elementu.

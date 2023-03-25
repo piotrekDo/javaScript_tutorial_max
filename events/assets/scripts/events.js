@@ -46,9 +46,26 @@ div.addEventListener('mouseenter', event => {
   console.log(event);
 });
 
-button.addEventListener('mouseenter', event => {
+button.addEventListener('click', function(event) {
   event.stopPropagation();
   console.log('CLICKED BUTTON');
   console.log(event);
+  console.log(this);
 });
 
+
+
+
+
+const listItems = document.querySelectorAll('li');
+const list = document.querySelector('ul');
+
+// listItems.forEach(listItem => {
+//   listItem.addEventListener('click', event => {
+//     event.target.classList.toggle('highlight');
+//   });
+// });
+
+list.addEventListener('click', function(event) {
+  event.target.closest('li').classList.toggle('highlight');
+});
