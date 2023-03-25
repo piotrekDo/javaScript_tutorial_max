@@ -141,3 +141,37 @@ const tooltipBody = document.importNode(tooltipTemplate.content, true);
 tooltipBody.querySelector('p').textContent = this.text;
 tooltipElement.append(tooltipBody);
 ```
+
+
+# Użyteczne funkcje i metody
+
+## Timeout i interval
+Rodzaj timera, opóźniający wykonanie kodu.
+Metoda `setTimeout` przyjmuje dwa argumenty- funkcję która ma się wykonać **po upłynięciu** czasu i drugi argument to czas wyrażony w ms. Nie zmraża przeglądarki, reszta funkcjonuje normalnie. W przypadku zapisu `setTimeout(this.startAnalytics, 3000);` gdzie przekazujemy referencję do funkcji, możemy przekazać trzeci argument w postaci tablicy argumentów dla funkcji. 
+  
+Metoda `setInterval` wykonuje przekazaną funkcję **cyklicznie** co x czasu
+```
+const intervalId = setInterval(() => {
+  console.log('Sending analytics data...')
+}, 2000);
+```
+
+## location
+zawiera informacje na temat aktualnie wyswietlanej strony i pozwala nawigować.
+- `location.href = 'https://....'` pozwala przejść na wskazany adres
+- `location.assign('https://....')` ofen to samo, ale w formie metody
+- `location.replace('https://')` jak powyżej, ale nie 'odkłada' się w historii. Nie mamy możliwości wrócić do strony poprzez <-
+- `location.host` wyświetla info na temat hosta. Zwraca pusty string przy localhost
+- `location.domain` jak wyzej, ale uwzglednia protokól, np; https
+- `location.pathname` wskazuje na strone wewnątrz domeny, np. /home albo /users. Odświeża stronę (?)
+
+## history
+location pozwala dodawać adresy do historii, history zaś nimi zarządzać, manipulować.
+- `history.back()` cofa o jedną stronę.
+- `history.forward()` do przodu
+- `history.length` ilość 'przełączeń', 'kroków'
+- `history.go(-5)` cofa o podaną ilość 'kroków', z minusem *back*, wartość dodatnia *forward*
+
+## obiekt navigator
+kolejny ciekawy obiekt zawierający informację o użytkowniku i przeglądarce
+- `navigator.geolocation.getCurrentPosition((data) => console.log(data))` funkcja ta przyjmuje funkcję określającą co chcemy zrobić z otrzymanymi danymi- np. console.log a może gdzieś je przesłać
