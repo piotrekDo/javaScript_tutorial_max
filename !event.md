@@ -17,3 +17,46 @@ const buttonClickHandler = event => {
   console.log(event);
 };
 ```
+
+## Bubbling & Capturing
+Dwue fazy wykonywanie listnera. Button zagnieżdzóny w div, a ten w section. Capturing to faza sprawdzania czy na section/div sa umieszczone listnery- uruchomią się pirwsze, bubbling to odwrotna sytuacja. Wykonanie buttona a następnie innych listenerów po drodze w górę. Domyślnie działa bubbling. 
+```
+div.addEventListener('mouseenter', event => {
+  console.log('CLICKED DIV');
+  console.log(event);
+});
+
+button.addEventListener('mouseenter', event => {
+  event.stopPropagation();
+  console.log('CLICKED BUTTON');
+  console.log(event);
+});
+```
+W pierwszej kolejności pojawi się wydruk `CLICKED BUTTON`, następnie `CLICKED DIV`.
+
+Event listener przyjmuje trzeci argument, domyślnie false oznaczający czy event 'bierze udział' w *capturing faze*
+```
+div.addEventListener('mouseenter', event => {
+  console.log('CLICKED DIV');
+  console.log(event);
+}, true);
+
+button.addEventListener('mouseenter', event => {
+  event.stopPropagation();
+  console.log('CLICKED BUTTON');
+  console.log(event);
+});
+```
+Przy powyższym zapisie pierwszy uruchomi się litener z DIV, następnie z buttona. 
+
+### Event propagation
+metoda `event.stopPropagation()` powstrzyma przechwytywanie tego eventu w powyższych i nie zadziała tutaj bubbling ani capturing
+
+```
+button.addEventListener('mouseenter', event => {
+  event.stopPropagation();
+  console.log('CLICKED BUTTON');
+  console.log(event);
+});
+```
+dodatkowo, metoda `stopImmediatePropagation()` powstrzyma inne listenery zapisane na tym samym elemencie 

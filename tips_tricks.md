@@ -22,3 +22,5 @@ filterInput.addEventListener('keydown', (event) => {
 ```
 
 
+### Parsowanie csv
+[github](https://github.com/nsebhastian/javascript-csv-array-example)

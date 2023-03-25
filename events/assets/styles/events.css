@@ -36,7 +36,6 @@ button:active {
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.26);
 }
 
-
-.disabled, .disabled:hover {
-  background-color: #ff74a2;
+#long-one {
+  height: 3000px;
 }
