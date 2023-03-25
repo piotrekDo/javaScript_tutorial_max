@@ -124,3 +124,20 @@ W ramach kodu HTML elementy mogą posiadać adtrybuty `data-whatever`. Możemy o
 ## element.getBoundingClientRect()
 zwraca dane z pozycją elementu. Odwołanie do tych danych pozwala dalej manipulować elementem. 
 ***`window.innerWidth`*** oraz ***`window.innerHeigth`*** zwracają odpowiednio aktualną wysokość i szerokość okna. Odowłanie do ***`document.documentElement.clientWidth`*** oraz ***`document.documentElement.clientWidth`*** zwracająpodobne wartośći, ale uwzględniające scroll. Więcej na MDN odnośnie ELement i pochodnych. 
+
+## Template
+Tag HTML, który nie jest renderowany, można się do niego odwołać wewnątrz kodu JS, zamiast zapisywać `innerHTML` 'na sztywno'
+```
+<template id="tooltip">
+    <h2>More Info</h2>
+    <p></p>
+</template>
+```
+```
+const tooltipElement = document.createElement('div');
+tooltipElement.className = 'card';
+const tooltipTemplate = document.getElementById('tooltip');
+const tooltipBody = document.importNode(tooltipTemplate.content, true);
+tooltipBody.querySelector('p').textContent = this.text;
+tooltipElement.append(tooltipBody);
+```
