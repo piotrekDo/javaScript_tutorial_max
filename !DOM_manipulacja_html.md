@@ -103,7 +103,7 @@ Metoda `cloneNode(boolean)` pozwala klonować elementy. Boolean to argument ozna
 `const newLi = liElement.cloneNode(true)`
 
 ### Usuwanie elementów
-Usuwać obiekty możemy z pomocą metody `element.ewmove()` usuwa element, na którym metoda została wywołana. Niewspierane przez IE. Nieco prawilniejszym sposobem jest usuwanie elementu poprzez `removeChild` wywołana na elemencie rodzica. Jeżeli element rodzica nie jest znany z uwagni na dynamiczne zachowanie drzewa DOM, można to osiągnąc w sprytny sposób: 
+Usuwać obiekty możemy z pomocą metody `element.remove()` usuwa element, na którym metoda została wywołana. Niewspierane przez IE. Nieco prawilniejszym sposobem jest usuwanie elementu poprzez `removeChild` wywołana na elemencie rodzica. Jeżeli element rodzica nie jest znany z uwagni na dynamiczne zachowanie drzewa DOM, można to osiągnąc w sprytny sposób: 
 ```
 const list = document.querySelector('ul');
 list.parentElement.removeChild(list)

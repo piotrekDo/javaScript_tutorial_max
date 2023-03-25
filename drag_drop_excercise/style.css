@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    padding: 50px;
+    background-color: darkgray;
+    height: 100vh;
+    width: 100vw;
+}
+
+.element {
+    position: absolute;
+    display: table-cell;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: blue;
+    border-radius: 30px;
+    color: white;
+}
+
+#add-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: 50px;
+}

@@ -71,3 +71,77 @@ list.addEventListener('click', function(event) {
 ```
 
 Odowłanie do `event.currentTarget` wywołałoby faktyczną listę zamiast elementu.
+
+# Drag & drop
+- oznaczyc element jako `draggable`
+- listner na `dragstart`
+- accept drop via `dragenter` and `dragover` Events => preventDefault(). Default = cancel
+
+Na elemencie LI ustwiamy wewnątrz HTML `draggable= "true"`
+```
+  <ul>
+    <li
+      id="p1"
+      data-extra-info="Got lifetime access, but would be nice to finish it soon!"
+      class="card"
+      draggable="true"
+    >
+```
+**Elementy LI będą już *draggable*, możemy je przemieszczać ale nigdzie upuścic- wrócą na swoje miejsce**
+
+Wewnątrz klasy odpowiedzialnej za obiekt dopisujemy metodę, ważne jest skonfigurowanie dragga poprzez [setData](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/Recommended_drag_types). Przekazujemy więc typ textu a w drugim argumencie **sam tekst**. Tutaj będzie to ID po którym dokonamy swap w tablicach. Drugą ważną metodą jest [effectAllowed](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/effectAllowed) określający co chcemy z danymi zrobić: przenieść, skopiować 
+```
+  connectDrag() {
+    const item = document.getElementById(this.id);
+    item.addEventListener('dragstart', event => {
+      event.dataTransfer.setData('text/plain', this.id);
+      event.dataTransfer.effectAllowed = 'move';
+    });
+
+    item.addEventListener('dragend', event => {
+      console.log(event);
+    });
+  }
+```
+**I umieszczamy ją w konstruktorze**
+
+Następnie ustawiamy *dropzone*
+W klasie listy zapisujemy metodę **i dopisujemy do konstruktora**. Ustawiamy listenery na dragenter, dragover, dragleave. Dragenter jest opcjonalna(?) 
+
+```
+  connectDroppable() {
+    const list = document.querySelector(`#${this.type}-projects ul`);
+
+    list.addEventListener('dragenter', event => {
+      if (event.dataTransfer.types[0] === 'text/plain') {
+        list.parentElement.classList.add('droppable');
+        event.preventDefault();
+      }
+    });
+
+    list.addEventListener('dragover', event => {
+      if (event.dataTransfer.types[0] === 'text/plain') {
+        event.preventDefault();
+      }
+    });
+
+    list.addEventListener('dragleave', event => {
+      if (event.relatedTarget.closest(`#${this.type}-projects ul`) !== list) {
+        list.parentElement.classList.remove('droppable');
+      }
+    });
+
+    list.addEventListener('drop', event => {
+      const prjId = event.dataTransfer.getData('text/plain');
+      if (this.projects.find(p => p.id === prjId)) {
+        return;
+      }
+      document
+        .getElementById(prjId)
+        .querySelector('button:last-of-type')
+        .click();
+      list.parentElement.classList.remove('droppable');
+      // event.preventDefault(); // not required
+    });
+  }
+```
