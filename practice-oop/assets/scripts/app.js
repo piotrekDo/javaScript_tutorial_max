@@ -62,6 +62,7 @@ class Tooltip extends Component {
 
     const x = hostElPosLeft + 20;
     const y = hostElPosTop + hostElHeight - parentElementScrolling - 10;
+    
 
     tooltipElement.style.position = 'absolute';
     tooltipElement.style.left = x + 'px'; // 500px
