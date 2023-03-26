@@ -164,3 +164,18 @@ console.log(calculateIncomeTaxAmount(200));
 
 ## Clouseure
 Każda funkcja w JS jest **clousure** powiązane jest to z funkcyjnym zasięgiem funkcji ograniczonym {}. Funkcja 'zamyka' wewnątrz utworzone zmienne
+
+## Rekurencja
+
+Wywołujemy funkcję z argumentem 'n' pomniejszonym o 1 za każdym razem. 
+```
+function powerOf(x, n) {
+
+  // if (n === 1) {
+  //   return x;
+  // }
+  // return x * powerOf(x, n - 1);
+
+  return n === 1 ? x : x * powerOf(x, n - 1);
+}
+```
