@@ -143,3 +143,24 @@ function print(hobby) {
 }
 ```
 metoda `push` wywołana wewnątrz metody będzie miała swoje odbicie na tablicy **poza metodą**.
+
+## Factory function
+Pozwalają owrapować funkcję w taki sposób, że służą jak konstruktor. Tworzymy 2 instancje tej samej metody 'hardcodując' stawkę podatku i przypisując do zmiennych **funkcję** z ustanowionym argumentem podatku. 
+
+```
+function createTaxCalculator(tax) {
+  function calculateTax(amount) {
+    return amount * tax *;
+  }
+  return calculateTax;
+}
+
+const calculateVatAmount = createTaxCalculator(0.19);
+const calculateIncomeTaxAmount = createTaxCalculator(0.25);
+
+console.log(calculateVatAmount(100));
+console.log(calculateIncomeTaxAmount(200));
+```
+
+## Clouseure
+Każda funkcja w JS jest **clousure** powiązane jest to z funkcyjnym zasięgiem funkcji ograniczonym {}. Funkcja 'zamyka' wewnątrz utworzone zmienne
