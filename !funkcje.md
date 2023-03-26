@@ -124,3 +124,22 @@ Pozesls ns przekazanie argumentów do metody, bez jej wywołania. Na przykład w
 Podobnie jak bind pozwala prekonfiurować metodę, pozwala ustalić czym jest this, wewnątrz metody, przyjmuje też argumenty, które zastosuje do parametrów. W odróżnieniu od bind, call wykonuje się odrazu. Bind ustawia metodę pod wykoannie w przyszłości. 
 
 Apply() działa tak samo jak call, jednak zamiast varargs argumentów przyjmuje tablicę. 
+
+## Pure function oraz side effect
+Rodzaj funkcji, która dla tych samych argumentów zwraca taki sam rezultat i nie powoduje żadnych *efektów ubocznych(?)* poza funkcją. Na przykład
+```
+function add(num1, num2) {
+    return num1 + num2;
+}
+```
+Zawsze zwróci ten sam rezultat dla tych samych argumentów, nie ma tutaj żądnego elementu losowości. Zawsze dla argumentów '2, 2' dostaniemy 4. Funkcja **inpure** zawierałaby np. jakiś mnożnik pochodzący z *Math.random()* albo żądania HTTP.
+
+Przykładem *side effect* może być metoda manipulująca tablicą, która obiekt tablicy zmieni, jako że operuje na **referencjach**. 
+```
+const hobbies = ['sport', 'cooking'];
+function print(hobby) {
+    hobbies.push(hobby);
+    console.log(hobbies);
+}
+```
+metoda `push` wywołana wewnątrz metody będzie miała swoje odbicie na tablicy **poza metodą**.

@@ -52,8 +52,8 @@ X = ${xMove}
 Y = ${yMove}`
   );
 
-  const textMoveX = xMove === 0 ? `prawo: 0` : xMove > 0 ? `prawo: ${xMove}` : `lewo: ${xMove}`;
-  const textMoveY = yMove === 0 ? `góra: 0` : yMove > 0 ? `góra: ${yMove}` : `dół: ${yMove}`
+  const textMoveX = xMove === 0 ? `prawo: 0` : xMove > 0 ? `prawo: ${xMove}` : `lewo: ${Math.abs(xMove)}`;
+  const textMoveY = yMove === 0 ? `góra: 0` : yMove > 0 ? `góra: ${yMove}` : `dół: ${Math.abs(yMove)}`
   console.log(textMoveX + ', ' + textMoveY)
   elemnt.style.left = (eventData.eleX + xMove) + "px";
   elemnt.style.top = (eventData.eleY + yMove) + "px";
