@@ -86,3 +86,13 @@ Do pól obiektów odnosimy się po kropce, jak w Java. Drugim sposobem jest zapi
 
 ## Import skryptów z defer oraz async.
 Dawniej skrypty były umieszczane na koniec tagu body, aby załadowały się na koniec, po parsowaniu strony. Inaczej kod nie będzie działał poprawnie. Może to opóźnić wczytanie dokumentu, zwłaszcza jeżeli skrypt jest pobierany z innego źródła- zacznie się to dopiero gdy cały dokument html zostanie sparsowaniy, co może potrwać przy większych plikach. Zastosowanie słowa `defer` oznacza, że skrypt powinien zostać pobrany odrazu, ale wykonany dopiero po parsowaniu html. Słowo `async` pozwala na natychmiastowe pobranie skryptu i równoległe jego wykonanie w czasie, kiedy dokument HTML jest parsowany. Może to być użyteczne w sytuacji, gdzie skrypt nie zawiera żadnych odniesień do samego dokumentu HTML. Wykonanie skryptu z wykorzystaniem async nie gwarantuje kolejnosci zapisanej w dokumencie html. 
+
+# Dodawanie bibliotek
+Najprostrzym sposobem jest dodanie kolejnego pliku .js do folderu projektu. Trzeba go jednak dopisać do HTML. Ważna jest kolejność, importowane pliki powinny znajdować się powyżej głównego skryptu, jako że jest on teraz zależny od dodanej biblioteki. 
+
+**CDN** pozwala na dodanie biblioteki w taki sam sposób, jednak bez pobierania pliku. Nalzęy go uwzględnić w HTML w atrybucie SRC podająć link właśnie. Kolejność rónież ma znaczenie. Serwery CDN są na ogół szybkie i wydajne. 
+
+## Przykłady bibliotek
+- [Lodash](https://lodash.com/) pozwala na wykonywanie operacji na tablicach, takich jak porównywanie ich zawartośi, wydzielaniu części współnych itd. 
+
+**jQUery** popularna szczegołnie kilka lat temu, ułatwia pracę z DOM. Dodawana do projektu tak jak inne biblioteki.  

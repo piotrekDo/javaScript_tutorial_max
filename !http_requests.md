@@ -86,3 +86,18 @@ Fetch API automatycznie ustawi header na form data. Nie trzeba też stosować JS
 
 ## JSON Data & Parsing Data
 JSON.parse() służy do zamiany tekstu w obiekty.
+
+# AXIOS- wstęp
+Axios zawiera metody zgodne z nazwami HTTP, np. `axios.get()` czy `axios.post()`
+
+Metoda _get_ przyjmuje tylk URL, wykorzystuje promise, zwraca obiekt zawierający garść informacji: 
+- config
+- data czyli faktyczne dane uzyskane w odpowiedzi
+- headers
+- request
+- status czyli kod odpowiedzi na żądanie
+- statusText
+
+Podobnie wygląda to w przypadku błędu, np. _404_. Dodatkowo w odróżnieniu od _fetch_, Axios traktuje takie kody odpowiedzi jako błąd i wyrzuca wyjątek do przechwycenia w `catche`. 
+
+Metoda POST potrafi rozpoznawać rodzaj przekazanego _body_ i ustanowić odpowiedni nagłówek oraz odpowiednio przekonwertować _body_ na JSON lub inny format. 
