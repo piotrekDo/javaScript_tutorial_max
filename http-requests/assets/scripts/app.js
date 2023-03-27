@@ -83,8 +83,8 @@ async function createPost(title, content) {
   };
 
   const fd = new FormData(form);
-  // fd.append('title', title);
-  // fd.append('body', content);
+  fd.append('title', title);
+  fd.append('body', content);
   fd.append('userId', userId);
 
   sendHttpRequest('POST', 'https://jsonplaceholder.typicode.com/posts', fd);

@@ -65,15 +65,10 @@ async function fetchPosts() {
 
 async function createPost(title, content) {
   const userId = Math.random();
-  const post = {
-    title: title,
-    body: content,
-    userId: userId,
-  };
 
   const fd = new FormData(form);
-  // fd.append('title', title);
-  // fd.append('body', content);
+  fd.append('title', title);
+  fd.append('body', content);
   fd.append("userId", userId);
 
   sendHttpRequest("POST", "https://jsonplaceholder.typicode.com/posts", fd);

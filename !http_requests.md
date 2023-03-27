@@ -60,5 +60,29 @@ function sendHttpRequest(method, url, data) {
 }
 ```
 
+## Form data
+Prosty interfejs, zawart w JS. Pozwala utworzyć mapę wartośći dodanych do żądania jako body. Pozwala też wysyłać pliki w prosty sposób, nawet w połączeniu z innymi danymi. Przekazując ormularz do konstruktora i stosując atrrybuty name w inputach, FormData będzie w stanie utworzyć obiket na ich podstawie. Zatem pola 
+```
+  fd.append('title', title);
+  fd.append('body', content);
+```
+Są wóczas zbędne. 
+
+async function createPost(title, content) {
+  const userId = Math.random();
+
+  const fd = new FormData(form);
+  fd.append('title', title);
+  fd.append('body', content);
+  fd.append("userId", userId);
+
+  sendHttpRequest("POST", "https://jsonplaceholder.typicode.com/posts", fd);
+}
+
+Fetch API automatycznie ustawi header na form data. Nie trzeba też stosować JSON.stringify przy body.
+**Należy zwracać uwagę, czy API do którego wysyłamy dane wspiera FORM DATA!!**
+
+[Wysyłanie plików z Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/File_API/Using_files_from_web_applications)
+
 ## JSON Data & Parsing Data
 JSON.parse() służy do zamiany tekstu w obiekty.
